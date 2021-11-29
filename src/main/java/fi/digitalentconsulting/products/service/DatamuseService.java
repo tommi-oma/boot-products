@@ -29,6 +29,7 @@ public class DatamuseService {
 		this.webClient = WebClient.create();
 		this.baseUrl = new URL(baseUrl);
 		this.wordPart = wordPart;
+		
 	}
 	
 	public List<String> getSynonyms(String word) throws JsonMappingException, JsonProcessingException, UnsupportedEncodingException {

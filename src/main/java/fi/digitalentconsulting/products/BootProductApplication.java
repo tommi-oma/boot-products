@@ -2,17 +2,21 @@ package fi.digitalentconsulting.products;
 
 import java.util.Arrays;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
+import fi.digitalentconsulting.products.controller.ProductController;
 import fi.digitalentconsulting.products.entity.Product;
 import fi.digitalentconsulting.products.repository.ProductRepository;
 
 @SpringBootApplication
 public class BootProductApplication {
+	private static Logger LOGGER = LoggerFactory.getLogger(BootProductApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(BootProductApplication.class, args);
@@ -35,7 +39,7 @@ public class BootProductApplication {
 				});
 			
 			repo.findAll().forEach(prod->{
-				System.out.println("CREATED: " + prod);
+				LOGGER.debug("CREATED: {}", prod);
 			});
 		};
 	}

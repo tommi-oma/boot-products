@@ -55,6 +55,7 @@ public class ProductController {
 	@GetMapping("")
 	public ResponseEntity<List<Product>> products(@RequestParam(name="minPrice", required=false) Double minPrice,
 			@RequestParam(name="search", required=false) String search) {
+		LOGGER.debug("Getting products, request params: minPrice={}, search={}", minPrice, search);
 		if (minPrice != null && search != null) {
 			return ResponseEntity.ok(productRepository.findAllByNameContainingIgnoreCaseAndPriceGreaterThan(search, minPrice));
 		}
