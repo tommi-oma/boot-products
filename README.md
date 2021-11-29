@@ -12,6 +12,11 @@ dependencies
 
 The H2 dependency is modified to be in the *test* scope.
 
+> The labs assume you have a Postgres server available. If not you can change the
+> connection, and update the connection strings in the application.yaml file.
+> Simplest is to use H2 also for development, in that case change the scope back to 
+> *runtime* (and remove the Postgres dependency if so desired).
+
 In addition there is a dependency for SpringDoc to enable OpenAPI documentation.
 
 ```
@@ -33,8 +38,6 @@ And also reactor tests
 	</dependency>
 ```
 
-The labs assume you have a Postgres server available. If not you can change the
-connection, and update the connection strings in the application.yaml file.
-Simplest is to use H2 also for development, in that case change the scope back to 
-*runtime* (and remove the Postgres dependency).
 
+Remember to use profiles, lab assumes "dev" and "test". Modify the Run configuration and add
+`-Dprofile=dev` for dev, and obviously `-Dprofile=test` for test profile.
