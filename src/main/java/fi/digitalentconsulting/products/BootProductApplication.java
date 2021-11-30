@@ -39,7 +39,7 @@ public class BootProductApplication {
 				});
 			
 			repo.findAll().forEach(prod->{
-				LOGGER.debug("CREATED: {}", prod);
+				LOGGER.debug("Created: {}", prod);
 			});
 		};
 	}

@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,6 +54,7 @@ public class ProductController {
 			    array = @ArraySchema(schema = @Schema(implementation = Product.class))) })
 			})
 	@GetMapping("")
+	@Transactional
 	public ResponseEntity<List<Product>> products(@RequestParam(name="minPrice", required=false) Double minPrice,
 			@RequestParam(name="search", required=false) String search) {
 		LOGGER.debug("Getting products, request params: minPrice={}, search={}", minPrice, search);

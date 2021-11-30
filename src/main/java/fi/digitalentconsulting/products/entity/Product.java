@@ -3,6 +3,7 @@ package fi.digitalentconsulting.products.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -16,6 +17,9 @@ public class Product {
 	private String description;
 	@Min(value=0, message="Cannot be a negative price")
 	private Double price;
+	
+	@Version
+	Long version;
 	
 	public Product() {}
 	
