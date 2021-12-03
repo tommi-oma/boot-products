@@ -1,8 +1,14 @@
 package fi.digitalentconsulting.products.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -16,6 +22,13 @@ public class Product {
 	private String description;
 	@Min(value=0, message="Cannot be a negative price")
 	private Double price;
+	
+	// For Optimistic lock
+	@Version
+	Long version;
+	
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+	private List<Inventory> inventory = new ArrayList<>();
 	
 	public Product() {}
 	
